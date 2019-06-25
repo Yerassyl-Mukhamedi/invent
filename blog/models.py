@@ -174,6 +174,7 @@ class Worker(models.Model):
     camera = models.ForeignKey(Camera, on_delete=models.CASCADE, null=True, blank=True)
     dispenser = models.ForeignKey(Dispenser, on_delete=models.CASCADE, null=True, blank=True)
 
+
     def publish(self):
         self.save()
 
