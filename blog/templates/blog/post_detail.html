@@ -1,17 +1,21 @@
 {% extends 'blog/base.html' %}
-{% block content %}
-    {% if post %}
-    <div class="list">
 
-        <div class="item">Сотрудник: {{ post.surname }} {{ post.name }}</div>
-        <div class="item">Laptop: {{ post.laptop }} {{ post.laptop.inventNumber }}</div>
-        <div class="item">printer: {{ post.printer }}</div>
-        <div class="item">shredder: {{ post.shredder }}</div>
-        <div class="item">television: {{ post.television }}</div>
-        <div class="item">condition: {{ post.condition }}</div>
-        <div class="item">telephone: {{ post.telephone }}</div>
-        <div class="item">camera: {{ post.camera }}</div>
-        <div class="item">dispenser: {{ post.dispenser }}</div>
-    </div>
-    {% endif %}
-{% endblock %}
+    {% block content %}
+        {% if user.is_authenticated %}
+            {% if post %}
+            <div class="list">
+                <div class="item">Сотрудник: {{ post.surname }} {{ post.name }}</div>
+                <div class="item">Laptop: {{ post.laptop }} {{ post.laptop.inventNumber }}</div>
+                <div class="item">printer: {{ post.printer }}</div>
+                <div class="item">shredder: {{ post.shredder }}</div>
+                <div class="item">television: {{ post.television }}</div>
+                <div class="item">condition: {{ post.condition }}</div>
+                <div class="item">telephone: {{ post.telephone }}</div>
+                <div class="item">camera: {{ post.camera }}</div>
+                <div class="item">dispenser: {{ post.dispenser }}</div>
+            </div>
+            {% endif %}
+        {% else %}
+            <a href="/accounts/login/">Login</a>
+        {% endif %}
+    {% endblock %}

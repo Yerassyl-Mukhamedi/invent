@@ -9,7 +9,7 @@
     {% if user.is_authenticated %}
         <div class="row">
             {% for post in posts %}
-            <div class="col-md-4 post list"  id="{% if post.company == 'pd' %}001.{% elif post.company == 'ar' %}002.{% elif post.company == 'bt' %}003.{% elif post.company == 'ts' %}004.{% elif post.company == 'ki' %}005.{% elif post.company == 'co' %}006.{% else %}un.{% endif %}{{ post.job }}.{{ post.workerID }}.{{ post.laptop.inventNumber }}">
+            <div class="col-md-4 post"  id="{% if post.company == 'pd' %}001.{% elif post.company == 'ar' %}002.{% elif post.company == 'bt' %}003.{% elif post.company == 'ts' %}004.{% elif post.company == 'ki' %}005.{% elif post.company == 'co' %}006.{% else %}un.{% endif %}{{ post.job }}.{{ post.workerID }}.{{ post.laptop.inventNumber }}">
                 <a href="{% url 'post_detail' pk=post.pk %}">
                     {{ post.name }}
                     {{ post.surname }}
@@ -47,7 +47,9 @@
             </div>
             {% endfor %}
         </div>
+
+    <a href="/">List</a>
     {% else %}
-        <a href="/accounts/login/">Login</a>
+    <a href="/accounts/login/">Login</a>
     {% endif %}
 {% endblock %}
