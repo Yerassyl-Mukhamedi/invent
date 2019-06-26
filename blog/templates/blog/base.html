@@ -15,15 +15,18 @@
 </html>
 
 <script>
-(function() {
-	try {
-        let url = location.href.match('#(.*)')[1];
-        localStorage.setItem("check", url);
-        let check = localStorage.getItem("check");
-        console.log(check);
-	} catch (e) {
-        let check = localStorage.getItem("check");
-        console.log(check);
-	}
-})();
+    (function() {
+        try {
+            let url = location.href.match('#(.*)')[1];
+            localStorage.setItem("check", url);
+        } catch (e) {
+            let check = localStorage.getItem("check");
+        }
+
+        if(location.href.match('specific')){
+            let check = localStorage.getItem("check");
+            console.log(check);
+            document.getElementById(check).style.display = "block";
+        }
+    })();
 </script>
