@@ -14,19 +14,5 @@
     </body>
 </html>
 
-<script>
-    (function() {
-        try {
-            let url = location.href.match('#(.*)')[1];
-            localStorage.setItem("check", url);
-        } catch (e) {
-            let check = localStorage.getItem("check");
-        }
-
-        if(location.href.match('specific')){
-            let check = localStorage.getItem("check");
-            console.log(check);
-            document.getElementById(check).style.display = "block";
-        }
-    })();
-</script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/code.js' %}"></script>
