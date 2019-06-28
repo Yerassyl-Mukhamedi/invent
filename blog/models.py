@@ -14,12 +14,13 @@ class Laptop(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     
     def publish(self):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 class Printer(models.Model):
     name = models.CharField(max_length=200, default='name')
@@ -30,6 +31,7 @@ class Printer(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     
     def publish(self):
         self.save()
@@ -147,6 +149,24 @@ class Dispenser(models.Model):
         return self.name + ' (' + self.serialNumber + ')'
 
 
+class Toxic(models.Model):
+
+    name = models.CharField(max_length=200, default='name')
+    company = models.CharField(
+        max_length=2,
+        choices=companyChoice,
+        default='pd',
+    )
+    inventNumber = models.CharField(max_length=200, default='name')
+    serialNumber = models.CharField(max_length=200, default='name')
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name + ' (' + self.serialNumber + ')'
+
+
 
 
 class Worker(models.Model):
@@ -164,15 +184,6 @@ class Worker(models.Model):
         choices=jobChoice,
         default='pd',
     )
-
-    laptop = models.ForeignKey(Laptop, on_delete=models.CASCADE, null=True)
-    printer = models.ForeignKey(Printer, on_delete=models.CASCADE, null=True, blank=True)
-    shredder = models.ForeignKey(Shredder, on_delete=models.CASCADE, null=True, blank=True)
-    television = models.ForeignKey(Television, on_delete=models.CASCADE, null=True, blank=True)
-    condition = models.ForeignKey(Condition, on_delete=models.CASCADE, null=True, blank=True)
-    telephone = models.ForeignKey(Telephone, on_delete=models.CASCADE, null=True, blank=True)
-    camera = models.ForeignKey(Camera, on_delete=models.CASCADE, null=True, blank=True)
-    dispenser = models.ForeignKey(Dispenser, on_delete=models.CASCADE, null=True, blank=True)
 
 
     def publish(self):

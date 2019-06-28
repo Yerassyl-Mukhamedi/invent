@@ -4,8 +4,11 @@ from .models import *
 
 def post_list(request):
     posts = Worker.objects.order_by('job')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    blogs = Laptop.objects.filter(name='HP Pavilion').values_list('worker', flat=True)
+    return render(request, 'blog/post_list.html', {'posts': posts, 'blogs': blogs })
 
 def post_detail(request, pk):
     post = get_object_or_404(Worker, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    notebooks = Laptop.objects.order_by('name')
+    printers = Printer.objects.order_by('name')
+    return render(request, 'blog/post_detail.html', {'post': post, 'notebooks': notebooks, 'printers': printers})

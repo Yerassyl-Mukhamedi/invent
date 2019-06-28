@@ -1,19 +1,32 @@
 {% extends 'blog/base.html' %}
-
     {% block content %}
         {% if user.is_authenticated %}
             {% if post %}
             <div class="list">
-                <div class="item">Сотрудник: {{ post.surname }} {{ post.name }}</div>
-                <div class="item">Laptop: {{ post.laptop }} {{ post.laptop.inventNumber }} {{ post.laptop.company }}</div>
-                <div class="item">printer: {{ post.printer }}</div>
-                <div class="item">shredder: {{ post.shredder }}</div>
-                <div class="item">television: {{ post.television }}</div>
-                <div class="item">condition: {{ post.condition }}</div>
-                <div class="item">telephone: {{ post.telephone }}</div>
-                <div class="item">camera: {{ post.camera }}</div>
-                <div class="item">dispenser: {{ post.dispenser }}</div>
+                <div class="item">
+                   <div class="label">
+                        Сотрудник:
+                   </div> 
+                    {{ post.surname }} {{ post.name }}</div>
+                <div class="item">
+                    <div class="label">Laptops</div>
+                    {% for notebook in notebooks %}
+                        {% if notebook.owner == post %}
+                            {{ notebook }} <br> 
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="label">Printers</div>
+                    {% for printer in printers %}
+                        {% if printer.owner == post %}
+                            {{ printer.name }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
+
+            
             {% endif %}
         {% else %}
             <a href="/accounts/login/">Login</a>
