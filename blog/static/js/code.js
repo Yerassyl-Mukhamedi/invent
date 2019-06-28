@@ -15,12 +15,13 @@
 // })();
 
 
-$( document ).ready(function() {
-        try {
-            let url = location.href.match('#(.*)')[1];
-            localStorage.setItem("check", url);
-            document.getElementById(url).style.display = "block";
-        } catch (e) {
-            $('.post').css('display', 'block');
-        }
-});
+// $( document ).ready(function() {
+//         try {
+//             let url = location.href.match('#(.*)')[1];
+//             localStorage.setItem("check", url);
+//             document.getElementById(url).style.display = "block";
+//         } catch (e) {
+//             $('.post').css('display',)
+//         }
+// });
+

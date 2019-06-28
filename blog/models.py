@@ -37,12 +37,11 @@ class Printer(models.Model):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 
 class Shredder(models.Model):
     name = models.CharField(max_length=200, default='name')
-
     company = models.CharField(
         max_length=2,
         choices=companyChoice,
@@ -50,16 +49,16 @@ class Shredder(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     
     def publish(self):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 class Television(models.Model):
     name = models.CharField(max_length=200, default='name')
-
     company = models.CharField(
         max_length=2,
         choices=companyChoice,
@@ -67,18 +66,18 @@ class Television(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     
     def publish(self):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 
 
 class Condition(models.Model):
     name = models.CharField(max_length=200, default='name')
-
     company = models.CharField(
         max_length=2,
         choices=companyChoice,
@@ -86,16 +85,16 @@ class Condition(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     
     def publish(self):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 class Telephone(models.Model):
     name = models.CharField(max_length=200, default='name')
-
     company = models.CharField(
         max_length=2,
         choices=companyChoice,
@@ -103,18 +102,18 @@ class Telephone(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     
     def publish(self):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 
 
 class Camera(models.Model):
     name = models.CharField(max_length=200, default='name')
-
     company = models.CharField(
         max_length=2,
         choices=companyChoice,
@@ -122,12 +121,13 @@ class Camera(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     
     def publish(self):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 
 
@@ -146,7 +146,7 @@ class Dispenser(models.Model):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 
 class Toxic(models.Model):
@@ -164,7 +164,7 @@ class Toxic(models.Model):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ')'
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 
 

@@ -3,13 +3,33 @@
         {% if user.is_authenticated %}
             {% if post %}
             <div class="list">
+                
                 <div class="item">
-                   <div class="label">
+                   <div class="title">
                         Сотрудник:
                    </div> 
                     {{ post.surname }} {{ post.name }}</div>
+                    <div class="info">
+                            {% if post.company == 'pd' %}
+                                001.
+                                {% elif post.company == 'ar' %}
+                                    002.
+                                    {% elif post.company == 'bt' %}
+                                        003.
+                                        {% elif post.company == 'ts' %}
+                                            004.
+                                            {% elif post.company == 'ki' %}
+                                                005.
+                                                {% elif post.company == 'co' %}
+                                                    co.
+                                                    {% else %}
+                                                        un.
+                            {% endif %}
+                            {{ post.job }}.
+                            {{ post.workerID }}
+                    </div>
                 <div class="item">
-                    <div class="label">Laptops</div>
+                    <div class="title">Laptops</div>
                     {% for notebook in notebooks %}
                         {% if notebook.owner == post %}
                             {{ notebook }} <br> 
@@ -17,10 +37,50 @@
                     {% endfor %}
                 </div>
                 <div class="item">
-                    <div class="label">Printers</div>
+                    <div class="title">Printers</div>
                     {% for printer in printers %}
                         {% if printer.owner == post %}
-                            {{ printer.name }}
+                            {{ printer }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="title">Shredder</div>
+                    {% for shredder in shredders %}
+                        {% if shredder.owner == post %}
+                            {{ shredder }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="title">Television</div>
+                    {% for television in televisions %}
+                        {% if television.owner == post %}
+                            {{ television }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="title">Condition</div>
+                    {% for condition in conditions %}
+                        {% if condition.owner == post %}
+                            {{ condition }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="title">Telephones</div>
+                    {% for telephone in telephones %}
+                        {% if telephone.owner == post %}
+                            {{ telephone }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="title">Cameras</div>
+                    {% for camera in cameras %}
+                        {% if camera.owner == post %}
+                            {{ camera }}
                         {% endif %}
                     {% endfor %}
                 </div>
