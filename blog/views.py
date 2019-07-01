@@ -5,7 +5,9 @@ from .models import *
 def post_list(request):
     posts = Worker.objects.order_by('job')
     blogs = Laptop.objects.filter(name='HP Pavilion').values_list('owner', flat=True)
-    return render(request, 'blog/post_list.html', {'posts': posts, 'blogs': blogs })
+    laptop_count = Laptop.objects.count()
+
+    return render(request, 'blog/post_list.html', {'posts': posts, 'blogs': blogs, 'laptop_count': laptop_count })
 
 def post_detail(request, pk):
     post = get_object_or_404(Worker, pk=pk)
