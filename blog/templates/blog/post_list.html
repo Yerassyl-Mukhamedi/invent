@@ -13,6 +13,11 @@
         <button class="btn" onclick="check()">Check</button>
 
         <button class="btn" onclick="fullList()">Full list</button>
+        <br>
+        
+        {% if laptop_count %}
+            Total Laptops Number {{ laptop_count }}
+        {% endif %}
         <div class="row">
             {% for post in posts %}
             <div class="col-md-4 post list"  id="{% if post.company == 'pd' %}001{% elif post.company == 'ar' %}002{% elif post.company == 'bt' %}003{% elif post.company == 'ts' %}004{% elif post.company == 'ki' %}005{% elif post.company == 'co' %}co{% else %}un{% endif %}{{ post.job }}{{ post.workerID }}">
@@ -41,9 +46,6 @@
                                 {{ post.job }}.
                                 {{ post.workerID }}
                         </div>
-                    {% if laptop_count %}
-                        {{ laptop_count }}
-                    {% endif %}
                     {% if post.laptop.inventNumber == '?????' %}
                         <div class="red">
                             Нет инвентарьного номера
