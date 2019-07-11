@@ -209,6 +209,11 @@ class Computer(models.Model):
 
 class Document(models.Model):
     name = models.CharField(max_length=200, default='')
+    section = models.CharField(
+        max_length=2,
+        choices=sectionChoice,
+        default='s1',
+    )
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     reading = models.BooleanField('Reading', default=False)
     adding = models.BooleanField('Adding', default=False)

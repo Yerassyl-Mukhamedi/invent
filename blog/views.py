@@ -25,4 +25,9 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post, 'notebooks': notebooks, 'printers': printers, 'shredders': shredders, 'televisions': televisions, 'conditions': conditions, 'telephones': telephones, 'cameras': cameras, 'dispensers': dispensers, 'microwaves': microwaves, 'displays': displays, 'computers': computers})
 
 def level_list(request):
-    post = get_object_or_404(Worker, pk=pk)
+    posts = Worker.objects.order_by('name')
+    return render(request, 'blog/level_list.html', {'posts': posts})
+
+def level_detail(request, pk):
+    posts = Document.objects.order_by('name')
+    return render(request, 'blog/level_detail.html', {'posts': posts})

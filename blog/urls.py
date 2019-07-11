@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.post_list, name='post_list'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
     path('level_list/', views.level_list, name='level_list'),
+    path('level/<int:pk>/', views.level_detail, name='level_detail'),
 ]
