@@ -3,11 +3,11 @@
         {% if user.is_authenticated %}
             {% if post %}
             <div class="list">
-                
+
                 <div class="item">
                    <div class="title">
                         Сотрудник:
-                   </div> 
+                   </div>
                     {{ post.surname }} {{ post.name }}</div>
                     <div class="info">
                             {% if post.company == 'pd' %}
@@ -32,7 +32,23 @@
                     <div class="title">Laptops</div>
                     {% for notebook in notebooks %}
                         {% if notebook.owner == post %}
-                            {{ notebook }} <br> 
+                            {{ notebook }} {{ notebook.get_company_display  }} <br>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="title">Displays</div>
+                    {% for display in displays %}
+                        {% if display.owner == post %}
+                            {{ display }} {{ display.company }} <br>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="title">Computers</div>
+                    {% for computer in computers %}
+                        {% if computer.owner == post %}
+                            {{ computer }} {{ computer.company }} <br>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -40,7 +56,7 @@
                     <div class="title">Printers</div>
                     {% for printer in printers %}
                         {% if printer.owner == post %}
-                            {{ printer }}
+                            {{ printer }} {{ printer.company }} <br>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -64,7 +80,7 @@
                     <div class="title">Condition</div>
                     {% for condition in conditions %}
                         {% if condition.owner == post %}
-                            {{ condition }}
+                            {{ condition }} {{ condition.company }} <br>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -84,9 +100,25 @@
                         {% endif %}
                     {% endfor %}
                 </div>
+                <div class="item">
+                    <div class="title">Dispensers</div>
+                    {% for dispenser in dispensers %}
+                        {% if dispenser.owner == post %}
+                            {{ dispenser }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="item">
+                    <div class="title">Micro Waves</div>
+                    {% for microwave in microwaves %}
+                        {% if microwave.owner == post %}
+                            {{ microwave }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
 
-            
+
             {% endif %}
         {% else %}
             <a href="/accounts/login/">Login</a>

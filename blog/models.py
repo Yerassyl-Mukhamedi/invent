@@ -15,12 +15,14 @@ class Laptop(models.Model):
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
-    
+
     def publish(self):
         self.save()
 
     def __str__(self):
-        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber + ' ' + str(self.owner)
+
+
 
 class Printer(models.Model):
     name = models.CharField(max_length=200, default='name')
@@ -32,7 +34,7 @@ class Printer(models.Model):
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
-    
+
     def publish(self):
         self.save()
 
@@ -50,7 +52,7 @@ class Shredder(models.Model):
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
-    
+
     def publish(self):
         self.save()
 
@@ -67,7 +69,7 @@ class Television(models.Model):
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
-    
+
     def publish(self):
         self.save()
 
@@ -86,7 +88,7 @@ class Condition(models.Model):
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
-    
+
     def publish(self):
         self.save()
 
@@ -103,7 +105,7 @@ class Telephone(models.Model):
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
-    
+
     def publish(self):
         self.save()
 
@@ -122,7 +124,7 @@ class Camera(models.Model):
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
-    
+
     def publish(self):
         self.save()
 
@@ -141,17 +143,17 @@ class Dispenser(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
-    
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
+
     def publish(self):
         self.save()
 
     def __str__(self):
         return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
-
-class Toxic(models.Model):
-
+class Microwave(models.Model):
     name = models.CharField(max_length=200, default='name')
+
     company = models.CharField(
         max_length=2,
         choices=companyChoice,
@@ -159,6 +161,7 @@ class Toxic(models.Model):
     )
     inventNumber = models.CharField(max_length=200, default='name')
     serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
 
     def publish(self):
         self.save()
@@ -166,8 +169,41 @@ class Toxic(models.Model):
     def __str__(self):
         return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
+class Display(models.Model):
+    name = models.CharField(max_length=200, default='name')
 
+    company = models.CharField(
+        max_length=2,
+        choices=companyChoice,
+        default='pd',
+    )
+    inventNumber = models.CharField(max_length=200, default='name')
+    serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
 
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
+
+class Computer(models.Model):
+    name = models.CharField(max_length=200, default='name')
+
+    company = models.CharField(
+        max_length=2,
+        choices=companyChoice,
+        default='pd',
+    )
+    inventNumber = models.CharField(max_length=200, default='name')
+    serialNumber = models.CharField(max_length=200, default='name')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 class Worker(models.Model):
     name = models.CharField(max_length=200, default='name')

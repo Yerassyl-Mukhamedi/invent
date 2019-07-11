@@ -6,8 +6,8 @@ def post_list(request):
     posts = Worker.objects.order_by('job')
     blogs = Laptop.objects.filter(name='HP Pavilion').values_list('owner', flat=True)
     laptop_count = Laptop.objects.count()
-
-    return render(request, 'blog/post_list.html', {'posts': posts, 'blogs': blogs, 'laptop_count': laptop_count })
+    worker_count = Worker.objects.count()
+    return render(request, 'blog/post_list.html', {'posts': posts, 'blogs': blogs, 'laptop_count': laptop_count, 'worker_count': worker_count })
 
 def post_detail(request, pk):
     post = get_object_or_404(Worker, pk=pk)
@@ -18,4 +18,15 @@ def post_detail(request, pk):
     conditions = Condition.objects.order_by('name')
     telephones = Telephone.objects.order_by('name')
     cameras = Camera.objects.order_by('name')
-    return render(request, 'blog/post_detail.html', {'post': post, 'notebooks': notebooks, 'printers': printers, 'shredders': shredders, 'televisions': televisions, 'conditions': conditions, 'telephones': telephones, 'cameras': cameras})
+    dispensers = Dispenser.objects.order_by('name')
+    microwaves = Microwave.objects.order_by('name')
+    displays = Display.objects.order_by('name')
+    computers = Computer.objects.order_by('name')
+    return render(request, 'blog/post_detail.html', {'post': post, 'notebooks': notebooks, 'printers': printers, 'shredders': shredders, 'televisions': televisions, 'conditions': conditions, 'telephones': telephones, 'cameras': cameras, 'dispensers': dispensers, 'microwaves': microwaves, 'displays': displays, 'computers': computers})
+
+def laptop(request):
+    posts = Worker.objects.order_by('job')
+    blogs = Laptop.objects.filter(name='HP Pavilion').values_list('owner', flat=True)
+    laptop_count = Laptop.objects.count()
+    worker_count = Worker.objects.count()
+    return render(request, 'blog/post_list.html', {'posts': posts, 'blogs': blogs, 'laptop_count': laptop_count, 'worker_count': worker_count })
