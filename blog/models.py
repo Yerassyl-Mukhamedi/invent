@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django import forms
 from .choices import *
 
 
@@ -204,6 +205,23 @@ class Computer(models.Model):
 
     def __str__(self):
         return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
+
+
+class Document(models.Model):
+    name = models.CharField(max_length=200, default='')
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
+    reading = models.BooleanField('Reading', default=False)
+    adding = models.BooleanField('Adding', default=False)
+    change = models.BooleanField('Change', default=False)
+    watch = models.BooleanField('Watch', default=False)
+    delete = models.BooleanField('Delete', default=False)
+    edit = models.BooleanField('Edit', default=False)
+    
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name
 
 class Worker(models.Model):
     name = models.CharField(max_length=200, default='name')

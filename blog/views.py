@@ -24,9 +24,5 @@ def post_detail(request, pk):
     computers = Computer.objects.order_by('name')
     return render(request, 'blog/post_detail.html', {'post': post, 'notebooks': notebooks, 'printers': printers, 'shredders': shredders, 'televisions': televisions, 'conditions': conditions, 'telephones': telephones, 'cameras': cameras, 'dispensers': dispensers, 'microwaves': microwaves, 'displays': displays, 'computers': computers})
 
-def laptop(request):
-    posts = Worker.objects.order_by('job')
-    blogs = Laptop.objects.filter(name='HP Pavilion').values_list('owner', flat=True)
-    laptop_count = Laptop.objects.count()
-    worker_count = Worker.objects.count()
-    return render(request, 'blog/post_list.html', {'posts': posts, 'blogs': blogs, 'laptop_count': laptop_count, 'worker_count': worker_count })
+def level_list(request):
+    post = get_object_or_404(Worker, pk=pk)
