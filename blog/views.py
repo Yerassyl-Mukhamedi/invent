@@ -30,5 +30,5 @@ def level_list(request):
 
 def level_detail(request, pk):
     post = get_object_or_404(Worker, pk=pk)
-    documents = Document.objects.order_by('fileName__name')
+    documents = Document.objects.order_by('fileName')
     return render(request, 'blog/level_detail.html', {'documents': documents, 'post': post})
