@@ -46,4 +46,14 @@
         check();    
     })();
 
+    function blok_open(current){
+        element = document.getElementById('content' + current);
+        if(element.className.match('opened')){
+            document.getElementById('content' + current).className -= 'opened';
+        }
+        else{
+            document.getElementById('content' + current).className += 'opened';
+        }
+    }
+
 </script>

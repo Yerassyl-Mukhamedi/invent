@@ -1,11 +1,41 @@
-{% for post in posts %}
-    {{ post }} 
+{% extends 'blog/base.html' %}
+    {% block content %}
+    <div class="name">{{ post }}</div>
     <br>
-    Reading {{ post.reading }} <br>
-    Adding {{ post.adding }} <br>
-    Change {{ post.change }} <br>
-    Watch {{ post.watch }} <br>
-    Delete {{ post.delete }} <br>
-    Edit {{ post.edit }} <br>
-    <br>
-{% endfor %}
+    <div class="title">Документы</div>
+    <div class="row">
+        {% for document in documents %}
+            {% if post == document.owner and document.fileName.get_section_display == 'Документы'%}
+                <div class="blok" id="{{ document.id }}" onclick="blok_open(this.id)">
+                    <div class="name">
+                        {{ document.fileName }}
+                    </div>
+                    <div class="content" id="content{{document.id}}">
+                        <!-- <div class="section">
+                            {{ document.fileName.get_section_display }}
+                        </div> -->
+                        {% if document.reading %}
+                            Чтение
+                        {% endif %}
+                        {% if document.adding %}
+                            Добавление
+                        {% endif %}
+                        {% if document.change %}
+                            Изменение
+                        {% endif %}
+                        {% if document.watch %}
+                            Просмотр
+                        {% endif %}
+                        {% if document.delete %}
+                            Удаление
+                        {% endif %}
+                        {% if document.edit %}
+                            Редактирование
+                        {% endif %}
+                        <br>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

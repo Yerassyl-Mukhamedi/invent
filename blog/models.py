@@ -207,26 +207,35 @@ class Computer(models.Model):
         return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 
-class Document(models.Model):
+
+class FileName(models.Model):
     name = models.CharField(max_length=200, default='')
     section = models.CharField(
-        max_length=2,
+        max_length=3,
         choices=sectionChoice,
         default='s1',
     )
-    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
-    reading = models.BooleanField('Reading', default=False)
-    adding = models.BooleanField('Adding', default=False)
-    change = models.BooleanField('Change', default=False)
-    watch = models.BooleanField('Watch', default=False)
-    delete = models.BooleanField('Delete', default=False)
-    edit = models.BooleanField('Edit', default=False)
-    
     def publish(self):
         self.save()
 
     def __str__(self):
         return self.name
+
+class Document(models.Model):
+    fileName = models.ForeignKey('FileName', on_delete=models.CASCADE, null=True, blank=True)
+    owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
+    reading = models.BooleanField('Чтение', default=False)
+    adding = models.BooleanField('Добавление', default=False)
+    change = models.BooleanField('Изменение', default=False)
+    watch = models.BooleanField('Просмотр', default=False)
+    delete = models.BooleanField('Удаление', default=False)
+    edit = models.BooleanField('Редактирование', default=False)
+    
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return str(self.fileName)
 
 class Worker(models.Model):
     name = models.CharField(max_length=200, default='name')
