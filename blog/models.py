@@ -232,9 +232,13 @@ class Document(models.Model):
     reading = models.BooleanField('Чтение', default=False)
     adding = models.BooleanField('Добавление', default=False)
     change = models.BooleanField('Изменение', default=False)
-    watch = models.BooleanField('Просмотр', default=False)
     delete = models.BooleanField('Удаление', default=False)
+    lead = models.BooleanField('Проведение', default=False)
+    unlead = models.BooleanField('Отмена проведения', default=False)
+    watch = models.BooleanField('Просмотр', default=False)
     edit = models.BooleanField('Редактирование', default=False)
+    check_delete = models.BooleanField('Пометка на удаление', default=False)
+    uncheck_delete= models.BooleanField('Снятие пометки на удаление', default=False)
 
     def publish(self):
         self.save()
