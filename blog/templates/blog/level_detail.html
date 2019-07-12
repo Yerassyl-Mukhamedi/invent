@@ -5,10 +5,10 @@
     <div class="title">Документы</div>
     <div class="row">
         {% for document in documents %}
-            {% if post == document.owner and document.fileName.get_section_display == 'Документы'%}
+            {% if post == document.owner and document.get_section_display == 'Документы'%}
                 <div class="blok" id="{{ document.id }}" onclick="blok_open(this.id)">
                     <div class="name">
-                        {{ document.fileName }}
+                        {{ document.name }}
                     </div>
                     <div class="content" id="content{{document.id}}">
                         <!-- <div class="section">

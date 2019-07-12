@@ -208,21 +208,26 @@ class Computer(models.Model):
 
 
 
-class FileName(models.Model):
-    name = models.CharField(max_length=200, default='')
+# class FileName(models.Model):
+#     name = models.CharField(max_length=200, default='asd', null=True)
+#     section = models.CharField(
+#         max_length=3,
+#         choices=sectionChoice,
+#         default='s1',
+#     )
+#     def publish(self):
+#         self.save()
+
+#     def __str__(self):
+#         return self.name
+
+class Document(models.Model):
+    name = models.CharField(max_length=200, default='name')
     section = models.CharField(
         max_length=3,
         choices=sectionChoice,
         default='s1',
     )
-    def publish(self):
-        self.save()
-
-    def __str__(self):
-        return self.name
-
-class Document(models.Model):
-    fileName = models.ForeignKey('FileName', on_delete=models.CASCADE, null=True, blank=True)
     owner = models.ForeignKey('Worker', on_delete=models.CASCADE, null=True, blank=True)
     reading = models.BooleanField('Чтение', default=False)
     adding = models.BooleanField('Добавление', default=False)
@@ -230,12 +235,12 @@ class Document(models.Model):
     watch = models.BooleanField('Просмотр', default=False)
     delete = models.BooleanField('Удаление', default=False)
     edit = models.BooleanField('Редактирование', default=False)
-    
+
     def publish(self):
         self.save()
 
     def __str__(self):
-        return str(self.fileName)
+        return self.name
 
 class Worker(models.Model):
     name = models.CharField(max_length=200, default='name')
