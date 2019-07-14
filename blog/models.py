@@ -208,18 +208,6 @@ class Computer(models.Model):
 
 
 
-# class FileName(models.Model):
-#     name = models.CharField(max_length=200, default='asd', null=True)
-#     section = models.CharField(
-#         max_length=3,
-#         choices=sectionChoice,
-#         default='s1',
-#     )
-#     def publish(self):
-#         self.save()
-
-#     def __str__(self):
-#         return self.name
 
 class Document(models.Model):
     name = models.CharField(max_length=200, default='name')
