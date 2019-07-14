@@ -23,11 +23,29 @@
                         {% if document.change %}
                             Изменение
                         {% endif %}
+                        {% if document.delete %}
+                            Удаление
+                        {% endif %}
+                        {% if document.lead %}
+                            Изменение
+                        {% endif %}
+                        {% if document.unlead %}
+                            Изменение
+                        {% endif %}
                         {% if document.watch %}
                             Просмотр
                         {% endif %}
-                        {% if document.delete %}
-                            Удаление
+                        {% if document.edit %}
+                            Изменение
+                        {% endif %}
+                        {% if document.lead_redact %}
+                            Изменение
+                        {% endif %}
+                        {% if document.check_delete %}
+                            Изменение
+                        {% endif %}
+                        {% if document.uncheck_delete %}
+                            Изменение
                         {% endif %}
                         {% if document.edit %}
                             Редактирование

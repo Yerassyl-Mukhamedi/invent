@@ -225,6 +225,7 @@ class Document(models.Model):
     unlead = models.BooleanField('Отмена проведения', default=False)
     watch = models.BooleanField('Просмотр', default=False)
     edit = models.BooleanField('Редактирование', default=False)
+    lead_redact = models.BooleanField('Изменение проведенных', default=False)
     check_delete = models.BooleanField('Пометка на удаление', default=False)
     uncheck_delete= models.BooleanField('Снятие пометки на удаление', default=False)
 
