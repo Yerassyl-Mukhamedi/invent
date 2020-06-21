@@ -207,8 +207,6 @@ class Computer(models.Model):
         return self.name + ' (' + self.serialNumber + ') ' + self.inventNumber
 
 
-
-
 class Document(models.Model):
     name = models.CharField(max_length=200, default='name')
     section = models.CharField(
@@ -257,3 +255,25 @@ class Worker(models.Model):
 
     def __str__(self):
         return  self.name +' '+ self.surname
+
+class Zapros(models.Model):
+    name = models.CharField(max_length=200, default='name')
+    problem = models.CharField(max_length=200, default='problem')
+
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name
+
+class Finished(models.Model):
+    name = models.CharField(max_length=200, default='name')
+    problem = models.CharField(max_length=200, default='problem')
+
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name + ' ' + self.problem
