@@ -32,7 +32,6 @@ matplotlib==3.1.1
 mccabe==0.6.1
 numpy==1.17.3
 oauthlib==3.1.0
-opencv-python==4.1.1.26
 opt-einsum==3.1.0
 pbr==5.4.3
 Pillow==6.2.1
@@ -53,9 +52,6 @@ six==1.13.0
 smmap2==2.0.5
 sqlparse==0.3.1
 stevedore==1.31.0
-tensorboard==1.15.0
-tensorflow==1.15.0
-tensorflow-estimator==1.15.1
 termcolor==1.1.0
 typed-ast==1.4.0
 urllib3==1.25.7
